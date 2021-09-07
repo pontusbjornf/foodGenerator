@@ -23,7 +23,33 @@
   /* =================================================================== Get recepi ==================================================================== */
 
 
-
+  function GetRandomRecipes(){
+   
+      
+      const url= `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
+      fetch(url)
+      .then((resp)=>resp.json())
+      .then(function(data){
+        console.log("WORKING")
+        
+      console.log(data.Recipes)
+        
+      })
+          .catch(error => {
+              if (typeof error.json === "function") {
+                  error.json().then(jsonError => {
+                      console.log("Json error from API");
+                      console.log(jsonError);
+                  }).catch(genericError => {
+                      console.log("Generic error from API");
+                      console.log(error.statusText);
+                  });
+              } else {
+                  console.log("Fetch error");
+                  console.log(error);
+              }
+          })
+  };
 
 
 
