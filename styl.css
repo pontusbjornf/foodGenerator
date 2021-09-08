@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    background: rgba(140, 185, 135, 0.705);;
   }
   
   *, *:before, *:after {
@@ -33,7 +34,7 @@ html {
 
   .hero:after {
     content: '';
-    background: rgba(70, 163, 61, 0.589);
+    
     position: absolute;
     top: 0;
     width: 100%;
@@ -275,4 +276,39 @@ html {
     }
   }
   /* =================================================================== Menu style ends==================================================================== */
+  .content {
+    max-width: 500px;
+    margin: auto;
+    margin-top: 2%;
+    background: white;
+    padding: 10px;
+  }
+  /* Main column */
+.main {   
+
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+.main h2{
+  text-align: center;
+  font-size: 26px;
+
+}
+.main h5{
+  text-align: center;
+  font-size: 14px;
+  font-weight: lighter;
+
   
+}
+
+/* Fake image, just for this example */
+
+.fakeimg img {
+  
+  width: 100%;
+  height: auto;
+  padding: 50px;
+}

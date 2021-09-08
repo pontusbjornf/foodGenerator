@@ -19,7 +19,7 @@
 
         
           <div class="container">
-            <button  class="hamburger hamburger" type="button">
+            <button  class="hamburger hamburger--boring" type="button">
               <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
               </span>
@@ -57,16 +57,21 @@
 <body>
       <!-- #=========================# Contet Recepi #=========================# -->
 
-     <div>
-        <div>Title: {{ result.Title }}</div>
-        <p> {{result.PreambleHTML}}</p>
-        <img :src = "img"/>
-        <ol v-for ="ing in ingredients">
-          <li>
-            <p >{{ing}}</p>
-          </li>
-        </ol>
-        <p> {{result.CookingSteps}} </p>
+      <div class="content">
+       
+    
+        <div class="main">
+          <h2>{{ result.Title }}</h2>
+          <br>
+          <h5>{{result.PreambleHTML}}</h5>
+          <div class="fakeimg"><img  :src = "img"/></div>
+          <p>Ingridienser:</p>
+         <br>
+          <ol v-for ="ing in ingredients">
+              {{ing}}
+          </ol>
+
+        </div>
         
      </div>
 
