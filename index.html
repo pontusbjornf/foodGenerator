@@ -7,12 +7,17 @@
     <script src="https://kit.fontawesome.com/628c8d2499.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" type="text/javascript"></script>
     <link rel="stylesheet" href="/styl.css" type="text/css" />
   
     <title></title>
+
+    <div id ="showData">
        <!-- #=========================# Menu #=========================# -->
     <div class="hero">
         <header id="masthead" role="banner">
+
+        
           <div class="container">
             <button  class="hamburger hamburger" type="button">
               <span class="hamburger-box">
@@ -21,10 +26,11 @@
               <span class="hamburger-label">Menu</span>
             </button>
             <nav id="site-nav" role="navigation">
-              <div class="col">
+              <div class="col" id ="choose">
                 <h4>Recept</h4>
                 <ul>
-                  <li><a onclick="GetRandomRecipes()">Random recept</a></li>
+                  
+                  <li><a href="#" v-on:click="GetRandomRecipes()">Random recept</a></li>
                   <li><a>Hälsosamma</a></li>
                   <li><a href="#">Laktosfri </a></li>
                   <li><a href="#">Glutenfria </a></li>
@@ -51,12 +57,25 @@
 <body>
       <!-- #=========================# Contet Recepi #=========================# -->
 
- <div>
+     <div>
+        <div>Title: {{ result.Title }}</div>
+        <img :src = "img"/>
+        <ol v-for ="ing in ingredients">
+          <li>
+            <p >{{ing}}</p>
+          </li>
+        </ol>
+     </div>
+
+
  
-</div>
+  <!--<img v-bind: src="imageSrc"> -->
+
    
 
 
+</div>
 </body>
 <script src="/app.js"></script>
+
 </html>

@@ -22,38 +22,67 @@
   /* =================================================================== Jqurey Menu ends ==================================================================== */
   /* =================================================================== Get recepi ==================================================================== */
 
+  var getData = new Vue({
+    
+    el: "#showData",
+    
+    data: {
 
-  function GetRandomRecipes(){
-   
-      
-      const url= `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
-      fetch(url)
-      .then((resp)=>resp.json())
-      .then(function(data){
-        console.log("WORKING")
+      result: "",
+      img: "",
+      ingredients: [],
+      responseAvailable: "false"
+     },
+     
+
+     methods: {
+ 
+      GetRandomRecipes(){
+
+         this.responseAvailable = false;
         
-      console.log(data.Recipes)
-        
-      })
-          .catch(error => {
-              if (typeof error.json === "function") {
-                  error.json().then(jsonError => {
-                      console.log("Json error from API");
-                      console.log(jsonError);
-                  }).catch(genericError => {
-                      console.log("Generic error from API");
-                      console.log(error.statusText);
-                  });
-              } else {
-                  console.log("Fetch error");
-                  console.log(error);
-              }
+          
+           const url= `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
+          
+           fetch(url)
+           .then((resp)=> {
+            if(resp.ok){
+              return resp.json();
+            }
+            else{
+              alert("Server returned " + response.status + " : " + response.statusText);
+                }                
           })
-  };
 
+          .then(resp =>{
 
+              this.result = resp.Recipes[0];
+              this.img = resp.Recipes[0].ImageUrl;
+              for (let index = 0; index <resp.Recipes[0].IngredientGroups[0].Ingredients.length; index++) {
+                this.ingredients.push(resp.Recipes[0].IngredientGroups[0].Ingredients[index].Text)
+              }
+              this.responseAvailable = true;
+          })
+          .catch(error => {
+                   if (typeof error.json === "function") {
+                       error.json().then(jsonError => {
+                           console.log("Json error from API");
+                           console.log(jsonError);
+                       }).catch(genericError => {
+                           console.log("Generic error from API");
+                           console.log(error.statusText);
+                       });
+                   } else {
+                       console.log("Fetch error");
+                       console.log(error);
+                   }
+               })
+       }
+     },
 
+   })
 
+ 
 
 
 
