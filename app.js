@@ -31,6 +31,7 @@
       result: "",
       img: "",
       ingredients: [],
+      cookingSteps: "",
       responseAvailable: "false"
      },
      
@@ -58,6 +59,8 @@
 
               this.result = resp.Recipes[0];
               this.img = resp.Recipes[0].ImageUrl;
+              this.ingredients = [];
+              this.cookingSteps = resp.Recipes[0].CookingSteps;
               for (let index = 0; index <resp.Recipes[0].IngredientGroups[0].Ingredients.length; index++) {
                 this.ingredients.push(resp.Recipes[0].IngredientGroups[0].Ingredients[index].Text)
               }

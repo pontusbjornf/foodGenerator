@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="se">
 <head>
   
     <meta charset="UTF-8">
@@ -59,12 +59,15 @@
 
      <div>
         <div>Title: {{ result.Title }}</div>
+        <p> {{result.PreambleHTML}}</p>
         <img :src = "img"/>
         <ol v-for ="ing in ingredients">
           <li>
             <p >{{ing}}</p>
           </li>
         </ol>
+        <p> {{result.CookingSteps}} </p>
+        
      </div>
 
 
