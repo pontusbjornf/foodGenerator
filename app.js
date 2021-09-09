@@ -19,6 +19,9 @@
     
 });
   /* =================================================================== Jqurey Menu ends ==================================================================== */
+  window.addEventListener('load', (event) => {
+    getData.GetRandomRecipes();
+  });
   /* =================================================================== Get recepi ==================================================================== */
 
   var getData = new Vue({
@@ -55,14 +58,22 @@
           })
 
           .then(resp =>{
-
+             console.log("WORKING")
+             const btn = document.querySelector("#refresh");
+             btn.classList.add("button--loading");
+             
+             console.log(resp.Recipes)
               this.result = resp.Recipes[0];
               this.img = resp.Recipes[0].ImageUrl;
               this.ingredients = [];
               this.cookingSteps = resp.Recipes[0].CookingSteps;
+              //Fixa array=> ibland är det 3 olika därför skrivs ej allt ut
               for (let index = 0; index <resp.Recipes[0].IngredientGroups[0].Ingredients.length; index++) {
                 this.ingredients.push(resp.Recipes[0].IngredientGroups[0].Ingredients[index].Text)
+                
               }
+             
+              btn.classList.remove("button--loading");
               this.responseAvailable = true;
           })
           .catch(error => {
@@ -89,3 +100,4 @@
 
 
     /* =================================================================== Get recepi ends ==================================================================== */
+    

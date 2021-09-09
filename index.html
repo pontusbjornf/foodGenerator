@@ -30,7 +30,7 @@
                 <h4>Recept</h4>
                 <ul>
                   
-                  <li><a href="#" v-on:click="GetRandomRecipes()">Random recept</a></li>
+                  <li><a href="#" v-on:click="GetRandomRecipes()">Dagen</a></li>
                   <li><a>Hälsosamma</a></li>
                   <li><a href="#">Laktosfri </a></li>
                   <li><a href="#">Glutenfria </a></li>
@@ -58,8 +58,10 @@
       <!-- #=========================# Contet Recepi #=========================# -->
 
       <div class="content">
-       
-    
+        <button  type="button" class="button" onclick="this.classList.toggle('button--loading')" id="refresh" v-on:click="GetRandomRecipes()">
+          <span class="button__text"><i class="fas fa-sync-alt"></i></span>
+        </button>
+     
         <div class="main">
           <h2>{{ result.Title }}</h2>
           <br>
@@ -83,6 +85,50 @@
 
 
 </div>
+<!-- FOOTER START -->
+<div class="footer">
+  <div class="contain">
+  <div class="col">
+    <h1>Company</h1>
+    <ul>
+      <li>About</li>
+    </ul>
+  </div>
+  <div class="col">
+    <h1>Recept</h1>
+    <ul>
+      <li >Dagens Recept</li>
+      <li>Laktosfri </li>
+      <li> Glutenfria</li>
+      <li> Vegetariska </li>
+      <li> Veganska</li>
+    </ul>
+  </div>
+  <div class="col">
+    <h1>Resources</h1>
+    <ul>
+      <li>Github</li>
+    </ul>
+  </div>
+  <div class="col">
+    <h1>Support</h1>
+    <ul>
+      <li>Contact</li>
+    </ul>
+  </div>
+  <div class="col social">
+    <h1>Social</h1>
+    <ul>
+      <li > <i  class="fab fa-facebook"></i></li>
+      <li> <i class="fab fa-instagram"></i></li>
+      <li> <i class="fab fa-snapchat"></i></li>
+   
+    </ul>
+  </div>
+<div class="clearfix"></div>
+</div>
+</div>
+<!-- END OF FOOTER -->
 </body>
 <script src="/app.js"></script>
 
