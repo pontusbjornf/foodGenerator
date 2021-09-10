@@ -69,35 +69,20 @@
               this.cookingSteps = resp.Recipes[0].CookingSteps;
               
             
-             
+              
               let counter =resp.Recipes[0].IngredientGroups.length;
               console.log(counter);
-    
-              //Fixa array=> ibland är det 3 olika därför skrivs ej allt ut
-              for (let index = 0; index <resp.Recipes[0].IngredientGroups[0].Ingredients.length; index++) {
-                this.ingredients.push(resp.Recipes[0].IngredientGroups[0].Ingredients[index].Text)
-              
-                
-              }
+              let number= 0;
+              while(number<counter)
+              {
 
-              // if(counter>0 && counter<2)
-              //  {
-              //   for (let index = 0; index <resp.Recipes[0].IngredientGroups[1].Ingredients.length; index++) {
-                  
-                
-              //     this.ingredients.push(resp.Recipes[0].IngredientGroups[1].Ingredients[index].Text)
-                  
-              //   }
-              //  }
-              // if(counter>1 && counter<3)
-              // {
-              //   for (let index = 0; index <resp.Recipes[0].IngredientGroups[2].Ingredients.length; index++) {
-                  
-                
-              //     this.ingredients.push(resp.Recipes[0].IngredientGroups[2].Ingredients[index].Text)
-                  
-              //   }
-              // }
+                for (let index = 0; index <resp.Recipes[0].IngredientGroups[number].Ingredients.length; index++) {
+                  this.ingredients.push(resp.Recipes[0].IngredientGroups[number].Ingredients[index].Text)
+
+                }
+                number++;
+              }
+              
              
               btn.classList.remove("button--loading");
               this.responseAvailable = true;
