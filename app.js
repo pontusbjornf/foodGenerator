@@ -33,7 +33,7 @@
       result: "",
       img: "",
       ingredients: [],
-      cookingSteps: "",
+      cookingSteps: [],
       responseAvailable: "false"
      },
      
@@ -67,9 +67,26 @@
               this.img = resp.Recipes[0].ImageUrl;
               this.ingredients = [];
               this.cookingSteps = resp.Recipes[0].CookingSteps;
+              let cookingStepsCorrect = "";
+
+                for (let index = 0; index < resp.Recipes[0].CookingSteps.length; index++) {
+                  
+                  var test = this.cookingSteps[index].replaceAll("&aring;", "å")
+                  test = test.replaceAll("&auml;", "ä");
+                  test = test.replaceAll( "&ouml;", "ö");
+                  test = test.replaceAll("&Aring;", "Å");
+                  test = test.replaceAll("&Auml;", "Ä");
+                  test = test.replaceAll("&Ouml;","Ö");
+                  
+                  cookingStepsCorrect = `${index +1 }. ${test} `
               
-            
-              
+                  test = "";
+                  this.cookingSteps[index] = cookingStepsCorrect;
+                
+                }
+
+
+             
               let counter =resp.Recipes[0].IngredientGroups.length;
               console.log(counter);
               let number= 0;
