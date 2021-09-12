@@ -661,6 +661,15 @@ main {
 	height: 100%;
 	object-fit: cover;
 }
+@media screen and (max-width: 600px) {
+  /* ändra så allt kommer irad på små telefoner */
+  .card__content {
+    visibility: hidden;
+
+
+  }
+}
+
 
 h1 {
 	font-weight: 300;
@@ -673,6 +682,11 @@ h2 {
 }
 
 p {
+	font-family: sans-serif;
+	font-weight: 300;
+	line-height: 1.42;
+}
+a {
 	font-family: sans-serif;
 	font-weight: 300;
 	line-height: 1.42;
