@@ -529,9 +529,7 @@ html {
 	--index: 3;
 }
 
-#card_4 {
-	--index: 4;
-}
+
 
 .card {
 	position: sticky;
@@ -662,14 +660,46 @@ main {
 	object-fit: cover;
 }
 @media screen and (max-width: 600px) {
-  /* ändra så allt kommer irad på små telefoner */
-  .card__content {
-    visibility: hidden;
-
-
+  
+ 
+  .card {
+    position:relative;
+   margin-top: 5%;
+   
   }
-}
+  
+  .card__content {
+    margin-bottom: 5%;
+    width: 100%;
+    display: block;
+    height: auto;
+    text-align: center;
+    padding: 10%;
+  
+  }
+    
 
+  
+  .card__content > div {
+    grid-area: text;
+    width: 100%;
+    
+  
+  }
+  
+  .card__content > figure {
+    grid-area: img;
+    overflow: hidden;
+  }
+  
+  .card__content > figure > img {
+    margin-top: 10%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+}
 
 h1 {
 	font-weight: 300;
