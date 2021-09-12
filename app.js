@@ -20,9 +20,12 @@
 });
   /* =================================================================== Jqurey Menu ends ==================================================================== */
   window.addEventListener('load', (event) => {
-    getData.GetRandomRecipes();
+    getData.GetData();
   });
   /* =================================================================== Get recepi ==================================================================== */
+
+
+
 
   var getData = new Vue({
     
@@ -39,15 +42,16 @@
      
 
      methods: {
- 
-      GetRandomRecipes(){
-
-         this.responseAvailable = false;
-        
-          
-           const url= `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
-          
-           fetch(url)
+       GetData(input){
+        let url= ``;
+         if(input == null){
+          url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`
+         }
+         else if(input == 1){
+            url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/searchwithfilters?recordsPerPage=40&pageNumber=1&phrase=under-30-minuter&sorting=0`
+         }
+       
+        fetch(url)
            .then((resp)=> {
             if(resp.ok){
               return resp.json();
@@ -57,69 +61,87 @@
                 }                
           })
 
-          .then(resp =>{
-             console.log("WORKING")
+       .then((resp) =>{
+          console.log("WORKING")
+     
+          this.GetRandomRecipes(resp.Recipes[0])
+        
+        })
+        .catch((error) => {
+          if (typeof error.json === "function") {
+              error.json().then(jsonError => {
+                  console.log("Json error from API");
+                  console.log(jsonError);
+              }).catch(genericError => {
+                  console.log("Generic error from API");
+                  console.log(error.statusText);
+              });
+          } else {
+              console.log("Fetch error");
+              console.log(error);
+          }
+      })
+       
+      },
+
+
+       GetRandomRecipes(data){
+             
              const btn = document.querySelector("#refresh");
              btn.classList.add("button--loading");
              
-             console.log(resp.Recipes)
-              this.result = resp.Recipes[0];
-              this.img = resp.Recipes[0].ImageUrl;
+              this.result = data;
+              this.img = data.ImageUrl;
               this.ingredients = [];
-              this.cookingSteps = resp.Recipes[0].CookingSteps;
-              let cookingStepsCorrect = "";
+              this.cookingSteps = data.CookingSteps;
 
-                for (let index = 0; index < resp.Recipes[0].CookingSteps.length; index++) {
-                  
-                  var test = this.cookingSteps[index].replaceAll("&aring;", "å")
-                  test = test.replaceAll("&auml;", "ä");
-                  test = test.replaceAll( "&ouml;", "ö");
-                  test = test.replaceAll("&Aring;", "Å");
-                  test = test.replaceAll("&Auml;", "Ä");
-                  test = test.replaceAll("&Ouml;","Ö");
-                  
-                  cookingStepsCorrect = `${index +1 }. ${test} `
-              
-                  test = "";
-                  this.cookingSteps[index] = cookingStepsCorrect;
-                
-                }
+             //fixar till texten
+             this.CleanUpText(data.CookingSteps.length, this.cookingSteps);
+         
 
-
-             
-              let counter =resp.Recipes[0].IngredientGroups.length;
+              let counter =data.IngredientGroups.length;
               console.log(counter);
               let number= 0;
               while(number<counter)
               {
-
-                for (let index = 0; index <resp.Recipes[0].IngredientGroups[number].Ingredients.length; index++) {
-                  this.ingredients.push(resp.Recipes[0].IngredientGroups[number].Ingredients[index].Text)
+                for (let index = 0; index <data.IngredientGroups[number].Ingredients.length; index++) {
+                  this.ingredients.push(data.IngredientGroups[number].Ingredients[index].Text)
 
                 }
                 number++;
               }
-              
-             
               btn.classList.remove("button--loading");
-              this.responseAvailable = true;
-          })
-          .catch(error => {
-                   if (typeof error.json === "function") {
-                       error.json().then(jsonError => {
-                           console.log("Json error from API");
-                           console.log(jsonError);
-                       }).catch(genericError => {
-                           console.log("Generic error from API");
-                           console.log(error.statusText);
-                       });
-                   } else {
-                       console.log("Fetch error");
-                       console.log(error);
-                   }
-               })
-       }
-     },
+       },
+
+
+
+       GetCategoryRecipes(data){
+
+
+
+
+       },
+
+       CleanUpText(arrayLenght, arrayContent){
+        for (let index = 0; index < arrayLenght; index++) {
+                  
+          var cleanText = arrayContent[index].replaceAll("&aring;", "å")
+          cleanText = cleanText.replaceAll("&auml;", "ä");
+          cleanText = cleanText.replaceAll( "&ouml;", "ö");
+          cleanText= cleanText.replaceAll("&Aring;", "Å");
+          cleanText = cleanText.replaceAll("&Auml;", "Ä");
+          cleanText = cleanText.replaceAll("&Ouml;","Ö");
+
+         arrayContent[index] = `${index +1 }. ${cleanText} `;
+           
+        }
+        return arrayContent;
+       },
+
+     
+
+     
+      }
 
    })
 
