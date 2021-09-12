@@ -289,11 +289,33 @@ html {
   }
   /* Main column */
 .main {   
+  
+  border-radius: 0.5em;
+  outline: var(--outline-width) solid lime;
 
   -ms-flex: 70%; /* IE10 */
   flex: 70%;
   background-color: white;
   padding: 20px;
+}
+.main img{   
+  background-color: #faf8f8;
+  border-radius: 1em;
+  outline: var(--outline-width) solid lime;
+  box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+  margin-bottom: 5%;
+  margin-top: 5%;
+  
+ 
+}
+.test{
+  background-color: #faf8f8;
+  border-radius: 1em;
+  outline: var(--outline-width) solid lime;
+  box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+  margin-bottom: 5%;
+  margin-top: 5%;
+  padding: 5%;
 }
 .main h2{
   text-align: center;
@@ -445,6 +467,9 @@ html {
   cursor:pointer;
   transition:800ms ease all;
   outline:none;
+  box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+  border-radius: 0.5em;
+  outline: var(--outline-width) solid lime;
 }
 
 
@@ -721,3 +746,20 @@ textarea {
 }
 [type="submit"]:hover { background:rgb(140, 185, 135); }
 /* -------------------------------------------------------------------- Form style ends*/
+.flex-horiz-container
+{display: flex;flex-direction: row; padding: 10%;
+  border-radius: 1em;
+  outline: var(--outline-width) solid lime;
+  box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+  margin-bottom: 5%;
+background-color: #faf8f8;}
+
+.left{ flex-basis: 33vw;
+text-align: center;
+}
+.left p{ 
+  font-size: 10px;
+  text-align: center;
+  }
+
+

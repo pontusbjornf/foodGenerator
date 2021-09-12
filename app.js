@@ -37,6 +37,9 @@
       img: "",
       ingredients: [],
       cookingSteps: [],
+      totalingredients:"",
+      difficulty:"",
+      time:"",
       responseAvailable: "false"
      },
      
@@ -63,8 +66,12 @@
 
        .then((resp) =>{
           console.log("WORKING")
-     
+          const btn = document.querySelector("#refresh");
+          btn.classList.add("button--loading");
+
           this.GetRandomRecipes(resp.Recipes[0])
+
+          btn.classList.remove("button--loading");
         
         })
         .catch((error) => {
@@ -87,40 +94,50 @@
 
        GetRandomRecipes(data){
              
-             const btn = document.querySelector("#refresh");
-             btn.classList.add("button--loading");
+            
              
               this.result = data;
               this.img = data.ImageUrl;
               this.ingredients = [];
               this.cookingSteps = data.CookingSteps;
+              //----------------------------------------Skrivet ut undefined
+            
+
+              this.difficulty = `${data.Difficulty}`;
+              
+              this.time = `${data.CookingTime} `;
+              
 
              //fixar till texten
              this.CleanUpText(data.CookingSteps.length, this.cookingSteps);
          
 
-              let counter =data.IngredientGroups.length;
+              let counter = data.IngredientGroups.length;
+              this.totalingredients = counter;
               console.log(counter);
               let number= 0;
+              let numbers= 0;
               while(number<counter)
               {
                 for (let index = 0; index <data.IngredientGroups[number].Ingredients.length; index++) {
                   this.ingredients.push(data.IngredientGroups[number].Ingredients[index].Text)
-
+                  numbers++;
+                  
                 }
                 number++;
               }
-              btn.classList.remove("button--loading");
+              this.totalingredients = `${numbers} ingredienser`;
+              
        },
 
 
 
-       GetCategoryRecipes(data){
+      //  GetCategoryRecipes(data){
 
 
 
 
-       },
+      //  },
 
        CleanUpText(arrayLenght, arrayContent){
         for (let index = 0; index < arrayLenght; index++) {
@@ -131,6 +148,18 @@
           cleanText= cleanText.replaceAll("&Aring;", "Å");
           cleanText = cleanText.replaceAll("&Auml;", "Ä");
           cleanText = cleanText.replaceAll("&Ouml;","Ö");
+          cleanText=cleanText.replaceAll("&eacute;","è")
+          cleanText=cleanText.replaceAll("<strong>","")
+          cleanText=cleanText.replaceAll("</strong>","")
+          cleanText=cleanText.replaceAll("&deg;","°")
+          cleanText=cleanText.replaceAll("&ordm;","°")
+          cleanText=cleanText.replaceAll("&egrave;","è")
+          cleanText=cleanText.replaceAll("&ndash;","/")
+          cleanText=cleanText.replaceAll("&nbsp;"," ")
+       
+         
+
+
 
          arrayContent[index] = `${index +1 }. ${cleanText} `;
            

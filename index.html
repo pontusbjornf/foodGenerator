@@ -29,7 +29,7 @@
               <div class="col">
                 <h4>Hem</h4>
                 <ul>
-                  <li><a href="">Startsida</a></li>
+                  <li><a href="./index.html">Startsida</a></li>
         
               </div>
               <div class="col" id ="choose">
@@ -65,27 +65,38 @@
 
       <div class="content">
         
-        <button  type="button" class="button" onclick="this.classList.toggle('button--loading')" id="refresh" v-on:click="GetRandomRecipes()">
+        <button  type="button" class="button" onclick="this.classList.toggle('button--loading')" id="refresh" v-on:click="GetData()">
           <span class="button__text"><i class="fas fa-sync-alt"></i></span>
         </button>
-     
+        
         <div class="main">
           <h2>{{ result.Title }}</h2>
           <br>
           <h5>{{result.PreambleHTML}}</h5>
           <div class="fakeimg"><img  :src = "img"/></div>
+          <div class="recipes_header_summary">
+            <div class="flex-horiz-container"><div class="left"> <i class="far fa-clock"></i> <br> <br>
+             <p>{{time}}</p> </div>
+            <div class="left"> <i class="fas fa-utensils"></i>
+              <br> <br>
+              <p>{{totalingredients}}</p> </div>
+            <div class="left"> <i class="fas fa-chart-line"></i>
+              <br> <br>
+              <p>{{difficulty}}</p> </div>
+          </div>
+          <div class="test">
           <p>Ingredienser:</p>
           <br>
-          <ol v-for ="ing in ingredients">
+          <ol style="font-size: 12;" v-for ="ing in ingredients">
               {{ing}}
           </ol>
           <br>
           <p>Tillagnings sätt: </p>
           <br>
-          <ol v-for = "step in cookingSteps">
+          <ol style="font-size: 12; white-space:pre-line;" v-for = "step in cookingSteps">
             {{step}}
           </ol>
-     
+        </div>
         </div>
         
      </div>
@@ -114,19 +125,21 @@
       </div> -->
     
 </div>
+</div>
 <!-- FOOTER START -->
 <div class="footer">
   <div class="contain">
   <div class="col">
     <h1>Company</h1>
     <ul>
-      <li>About</li>
+      <a style="text-decoration: none;" href="/about.html"> <li>About</li> </a>
     </ul>
   </div>
   <div class="col">
     <h1>Recept</h1>
     <ul>
-      <li >Dagens Recept</li>
+      <li >Dagens</li>
+      <a style="text-decoration: none;"> <li>Under 30 Minuter</li></a>
       <li>Laktosfri </li>
       <li> Glutenfria</li>
       <li> Vegetariska </li>
@@ -142,14 +155,14 @@
   <div class="col">
     <h1>Support</h1>
     <ul>
-      <li>Contact</li>
+      <a style="text-decoration: none;" href="mailto: appsultit@gmail.com"> <li>Contact</li> </a>
     </ul>
   </div>
   <a href=""></a>
   <div class="col social">
     <h1>Social</h1>
     <ul>
-      <li > <i class="fab fa-facebook"></i></li>
+      <li > <i class="fab fa-facebook"></i></li> 
       <li> <i class="fab fa-instagram"></i></li>
       <li> <i class="fab fa-snapchat"></i></li>
    
@@ -159,6 +172,7 @@
 </div>
 </div>
 <!-- END OF FOOTER -->
+
 
 </div>
 </body>
