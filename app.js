@@ -40,6 +40,7 @@
       totalingredients:"",
       difficulty:"",
       time:"",
+      portions:"",
       responseAvailable: "false"
      },
      
@@ -66,6 +67,7 @@
 
        .then((resp) =>{
           console.log("WORKING")
+          console.log(resp.Recipes[0])
           const btn = document.querySelector("#refresh");
           btn.classList.add("button--loading");
 
@@ -106,6 +108,7 @@
               this.difficulty = `${data.Difficulty}`;
               
               this.time = `${data.CookingTime} `;
+              this.portions =`${data.Portions} portioner `;
               
 
              //fixar till texten

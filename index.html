@@ -16,8 +16,6 @@
        <!-- #=========================# Menu #=========================# -->
     <div class="hero">
         <header id="masthead" role="banner">
-
-        
           <div class="container">
             <button  class="hamburger hamburger--boring" type="button">
               <span class="hamburger-box">
@@ -30,29 +28,28 @@
                 <h4>Hem</h4>
                 <ul>
                   <li><a href="./index.html">Startsida</a></li>
-        
               </div>
               <div class="col" id ="choose">
                 <h4>Recept</h4>
                 <ul>
-                  
                   <li><a href="" v-on:click="GetData()">Dagen</a></li>
                   <li><a href="#"v-on:click="GetData(1)">Under 30 Minuter</a></li>
                   <li><a href="#">Laktosfri </a></li>
                   <li><a href="#">Glutenfria </a></li>
                   <li><a href="#">Vegetariska </a></li>
-                  <li><a href="#">Veganska</a></li>
                 </ul>            
               </div>
               <div class="col">
                 <h4>Kontakta oss</h4>
-                <ul>
+               <ul>
                   <li><a href="./about.html">Om oss</a></li>
-        
+               </ul>
               </div>
-             
               <div class="col">
-           
+                <h4>Blogg</h4>
+                <ul>
+                  <li><a href="./about.html"></a></li>
+                </ul>
               </div>
           </nav>
         </div>
@@ -62,18 +59,16 @@
 </head>
 <body>
       <!-- #=========================# Content Recipe #=========================# -->
-
       <div class="content">
-        
         <button  type="button" class="button" onclick="this.classList.toggle('button--loading')" id="refresh" v-on:click="GetData()">
           <span class="button__text"><i class="fas fa-sync-alt"></i></span>
         </button>
-        
         <div class="main">
           <h2>{{ result.Title }}</h2>
           <br>
           <h5>{{result.PreambleHTML}}</h5>
           <div class="fakeimg"><img  :src = "img"/></div>
+          <!-- ========================================================================================= recipes header summary -->
           <div class="recipes_header_summary">
             <div class="flex-horiz-container"><div class="left"> <i class="far fa-clock"></i> <br> <br>
              <p>{{time}}</p> </div>
@@ -83,7 +78,12 @@
             <div class="left"> <i class="fas fa-chart-line"></i>
               <br> <br>
               <p>{{difficulty}}</p> </div>
+              <div class="left"> <i class="fas fa-chart-pie"></i></i>
+                <br> <br>
+                <p>{{portions}}</p> </div>
           </div>
+           <!-- ========================================================================================= recipes header summary ends -->
+          <!-- ========================================================================================= recipes/cookingsteps -->
           <div class="test">
           <p>Ingredienser:</p>
           <br>
@@ -91,41 +91,41 @@
               {{ing}}
           </ol>
           <br>
-          <p>Tillagnings sätt: </p>
-          <br>
+          <p>Gör så här: </p>
+         
           <ol style="font-size: 12; white-space:pre-line;" v-for = "step in cookingSteps">
             {{step}}
           </ol>
         </div>
+        <!-- ========================================================================================= recipes/cookingsteps ends -->
         </div>
         
      </div>
 
      <div>
 
-
-
        <!-- #=========================# Content Recipe ENDS HERE#=========================# -->
 
 
-       <!-- Annons -->
-      <!-- <div style="width: 100%; ">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169767127574780"
-         crossorigin="anonymous"></script>
+       
+      </div>
+    </div>
+    <!-- Annons -->
+<!-- <div style="width: 100%; ">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169767127574780"
+   crossorigin="anonymous"></script>
 
-     <ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-9169767127574780"
-     data-ad-slot="2990489919"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-     <script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-     </script>
-      </div> -->
-    
-</div>
-</div>
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-9169767127574780"
+data-ad-slot="2990489919"
+data-ad-format="auto"
+data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>  -->
+
 <!-- FOOTER START -->
 <div class="footer">
   <div class="contain">
@@ -143,7 +143,6 @@
       <li>Laktosfri </li>
       <li> Glutenfria</li>
       <li> Vegetariska </li>
-      <li> Veganska</li>
     </ul>
   </div>
   <div class="col">
@@ -171,10 +170,8 @@
 <div class="clearfix"></div>
 </div>
 </div>
-<!-- END OF FOOTER -->
-
-
 </div>
+<!-- END OF FOOTER -->
 </body>
 
 <script  src="/app.js" charset="UTF-8"></script>
