@@ -24,10 +24,11 @@
   });
   /* =================================================================== Get recepi ==================================================================== */
 
-
+  var testinput = 0;
 
 
   var getData = new Vue({
+    
     
     el: "#showData",
     
@@ -42,17 +43,26 @@
       time:"",
       portions:"",
       responseAvailable: "false"
+      
+      
      },
      
 
      methods: {
+   
        GetData(input){
+         testinput = input;
         let url= ``;
          if(input == null){
-          url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`
+            url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
+          //  url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/recipe/727968`;
+         
+          
+          
          }
          else if(input == 1){
-            url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/searchwithfilters?recordsPerPage=40&pageNumber=1&phrase=under-30-minuter&sorting=0`
+            // url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/searchwithfilters?recordsPerPage=40&pageNumber=1&phrase=under-30-minuter&sorting=0`;
+            url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/recipe/727968`;
          }
        
         fetch(url)
@@ -66,12 +76,19 @@
           })
 
        .then((resp) =>{
+         const btn = document.querySelector("#refresh");
           console.log("WORKING")
-          console.log(resp.Recipes[0])
-          const btn = document.querySelector("#refresh");
           btn.classList.add("button--loading");
-
-          this.GetRandomRecipes(resp.Recipes[0])
+          if(testinput==1)
+          {
+            console.log(resp)
+  
+            this.GetRandomRecipes(resp);
+            
+          }
+          else {
+            this.GetRandomRecipes(resp.Recipes[0]);
+          }
 
           btn.classList.remove("button--loading");
         
