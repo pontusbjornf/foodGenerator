@@ -24,12 +24,10 @@
   });
   /* =================================================================== Get recepi ==================================================================== */
 
-  var testinput = 0;
-
+  var category = 0;
 
   var getData = new Vue({
-    
-    
+        
     el: "#showData",
     
     data: {
@@ -51,18 +49,33 @@
      methods: {
    
        GetData(input){
-         testinput = input;
+        category = input;
         let url= ``;
          if(input == null){
             url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
-          //  url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/recipe/727968`;
          
-          
-          
+
          }
          else if(input == 1){
-            // url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/searchwithfilters?recordsPerPage=40&pageNumber=1&phrase=under-30-minuter&sorting=0`;
-            url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/recipe/727968`;
+            url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/searchwithfilters?recordsPerPage=40&pageNumber=1&phrase=under-30-minuter&sorting=0`;
+            
+          fetch(url)
+         .then((resp)=> {
+         if(resp.ok){
+           return resp.json();
+         }
+         else{
+           alert("Server returned " + response.status + " : " + response.statusText);
+             }                
+       })
+       .then((resp) =>{
+      
+        
+         url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/recipe/${resp.Id}`;
+       
+       })
+       
+
          }
        
         fetch(url)
@@ -79,7 +92,7 @@
          const btn = document.querySelector("#refresh");
           console.log("WORKING")
           btn.classList.add("button--loading");
-          if(testinput==1)
+          if(category==1)
           {
             console.log(resp)
   
@@ -112,9 +125,7 @@
 
 
        GetRandomRecipes(data){
-             
-            
-             
+
               this.result = data;
               this.img = data.ImageUrl;
               this.ingredients = [];
@@ -151,13 +162,12 @@
        },
 
 
-
-      //  GetCategoryRecipes(data){
-
+       GetId(url){
 
 
 
-      //  },
+
+       },
 
        CleanUpText(arrayLenght, arrayContent){
         for (let index = 0; index < arrayLenght; index++) {
@@ -176,10 +186,6 @@
           cleanText=cleanText.replaceAll("&egrave;","è")
           cleanText=cleanText.replaceAll("&ndash;","/")
           cleanText=cleanText.replaceAll("&nbsp;"," ")
-       
-         
-
-
 
          arrayContent[index] = `${index +1 }. ${cleanText} `;
            
@@ -187,9 +193,6 @@
         return arrayContent;
        },
 
-     
-
-     
       }
 
    })
