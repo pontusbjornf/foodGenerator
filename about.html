@@ -19,7 +19,7 @@
 
         
           <div class="container">
-            <button  class="hamburger hamburger--boring" type="button">
+            <button id="hej" class="hamburger hamburger--boring" type="button">
               <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
               </span>
@@ -37,7 +37,7 @@
                 <h4>Recept</h4>
                 <ul>
                   
-                 <li><a href="index.html" v-on:click="GetRandomRecipes()">Dagens</a></li>
+                 <li><a v-on:click="GetRandomRecipes()" onclick="$('#hej').click()">Dagens</a></li>
                   <!-- <li><a href="">Hälsosamma</a></li>
                   <li><a href="#">Laktosfri </a></li>
                   <li><a href="#">Glutenfria </a></li>
@@ -130,8 +130,8 @@
   <div class="col">
     <h1>Recept</h1>
     <ul>
-      <li >Dagens Recept</li>
-      <!-- <li>Laktosfri </li>
+      <a href="/index.html"> <li>Dagens</li> </a>
+      <li>Laktosfri </li>
       <li> Glutenfria</li>
       <li> Vegetariska </li> -->
     </ul>
@@ -139,7 +139,7 @@
   <div class="col">
     <h1>Resources</h1>
     <ul>
-      <li>Github</li>
+      <a style="text-decoration: none;" href="https://github.com/" target="_blank"> <li>Github</li> </a>
     </ul>
   </div>
   <div class="col">

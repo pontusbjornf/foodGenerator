@@ -17,7 +17,7 @@
     <div class="hero">
         <header id="masthead" role="banner">
           <div class="container">
-            <button  class="hamburger hamburger--boring" type="button">
+            <button id="Menu" class="hamburger hamburger--boring" type="button">
               <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
               </span>
@@ -27,12 +27,12 @@
               <div class="col">
                 <h4>Hem</h4>
                 <ul>
-                  <li><a style="cursor: pointer;" v-on:click="GetData()">Startsida</a></li>
+                  <li><a style="cursor: pointer;" onclick="$('#Menu').click()">Startsida</a></li>
               </div>
               <div class="col" id ="choose">
                 <h4>Recept</h4>
                 <ul>
-                  <li><a style="cursor: pointer;"  v-on:click="GetData()">Dagens</a></li>
+                  <li><a style="cursor: pointer;" onclick="$('#Menu,#refresh').click()">Dagens</a></li>
                   <!-- <li><a href="#"v-on:click="GetData1()">Under 30 Minuter</a></li>
                   <li><a href="#">Laktosfri </a></li>
                   <li><a href="#">Glutenfria </a></li>
@@ -116,7 +116,7 @@
     </div>
   </div>
     <!-- Annons -->
-<!-- <div style="width: 100%; ">
+<div style="width: 100%; ">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9169767127574780"
    crossorigin="anonymous"></script>
 
@@ -129,7 +129,7 @@ data-full-width-responsive="true"></ins>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-</div>  -->
+</div> 
 
 <!-- FOOTER START -->
 <div class="footer">
@@ -143,17 +143,17 @@ data-full-width-responsive="true"></ins>
   <div class="col">
     <h1>Recept</h1>
     <ul>
-      <!-- <li >Dagens</li>
-      <a style="text-decoration: none;"> <li>Under 30 Minuter</li></a>
+      <a id="topFuction" style="text-decoration: none;" onclick="$('#refresh').click()"> <li>Dagens</li> </a>
+      <!-- <a style="text-decoration: none;"> <li>Under 30 Minuter</li></a>
       <li>Laktosfri </li>
       <li> Glutenfria</li>
-      <li> Vegetariska </li>
-    </ul> -->
+      <li> Vegetariska </li>  -->
+    </ul>
   </div>
   <div class="col">
     <h1>Resources</h1>
     <ul>
-      <li>Github</li>
+      <a style="text-decoration: none;" href="https://github.com/" target="_blank"> <li>Github</li> </a>
     </ul>
   </div>
   <div class="col">
