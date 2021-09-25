@@ -18,6 +18,8 @@
     
     
 });
+
+
   /* =================================================================== Jqurey Menu ends ==================================================================== */
   window.addEventListener('load', (event) => {
     getData.GetData();
@@ -52,6 +54,7 @@
        GetData(input){
         category = input;
         let url= ``;
+       
          if(input == null){
             url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
           
@@ -121,17 +124,14 @@
           })
 
        .then((resp) =>{
-        const btn = document.querySelector("#refresh");
-      
-        btn.classList.add("button--loading");
-       
+        
 
       
         var random =  Math.floor(Math.random() * 40);
         url1 = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/recipe/${resp.Recipes[random].Id}`;
         console.log(url1)
         this.GetData(1);
-        btn.classList.remove("button--loading");
+       
         
         })
         .catch((error) => {

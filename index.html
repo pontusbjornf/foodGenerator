@@ -27,16 +27,16 @@
               <div class="col">
                 <h4>Hem</h4>
                 <ul>
-                  <li><a href="./index.html">Startsida</a></li>
+                  <li><a style="cursor: pointer;" v-on:click="GetData()">Startsida</a></li>
               </div>
               <div class="col" id ="choose">
                 <h4>Recept</h4>
                 <ul>
-                  <li><a href="" v-on:click="GetData()">Dagen</a></li>
-                  <li><a href="#"v-on:click="GetData1()">Under 30 Minuter</a></li>
+                  <li><a style="cursor: pointer;"  v-on:click="GetData()">Dagens</a></li>
+                  <!-- <li><a href="#"v-on:click="GetData1()">Under 30 Minuter</a></li>
                   <li><a href="#">Laktosfri </a></li>
                   <li><a href="#">Glutenfria </a></li>
-                  <li><a href="#">Vegetariska </a></li>
+                  <li><a href="#">Vegetariska </a></li> -->
                 </ul>            
               </div>
               <div class="col">
@@ -46,10 +46,7 @@
                </ul>
               </div>
               <div class="col">
-                <h4>Blogg</h4>
-                <ul>
-                  <li><a href="./about.html"></a></li>
-                </ul>
+               
               </div>
           </nav>
         </div>
@@ -60,7 +57,7 @@
 <body>
       <!-- #=========================# Content Recipe #=========================# -->
       <div class="content">
-        <button  type="button" class="button" onclick="this.classList.toggle('button--loading')" id="refresh" v-on:click="GetData()">
+        <button type="button" class="button" onclick="this.classList.toggle('button--loading')" id="refresh" v-on:click="GetData()">
           <span class="button__text"><i class="fas fa-sync-alt"></i></span>
         </button>
         <div class="main">
@@ -146,12 +143,12 @@ data-full-width-responsive="true"></ins>
   <div class="col">
     <h1>Recept</h1>
     <ul>
-      <li >Dagens</li>
+      <!-- <li >Dagens</li>
       <a style="text-decoration: none;"> <li>Under 30 Minuter</li></a>
       <li>Laktosfri </li>
       <li> Glutenfria</li>
       <li> Vegetariska </li>
-    </ul>
+    </ul> -->
   </div>
   <div class="col">
     <h1>Resources</h1>
