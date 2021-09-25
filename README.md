@@ -1,2 +1,2 @@
 # foodGenerator
-Generate random recepi 
+Generate Random Recipes 
