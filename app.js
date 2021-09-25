@@ -25,6 +25,7 @@
   /* =================================================================== Get recepi ==================================================================== */
 
   var category = 0;
+  var url1 ="";
 
   var getData = new Vue({
         
@@ -53,29 +54,10 @@
         let url= ``;
          if(input == null){
             url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
-         
-
+          
          }
          else if(input == 1){
-            url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/searchwithfilters?recordsPerPage=40&pageNumber=1&phrase=under-30-minuter&sorting=0`;
-            
-          fetch(url)
-         .then((resp)=> {
-         if(resp.ok){
-           return resp.json();
-         }
-         else{
-           alert("Server returned " + response.status + " : " + response.statusText);
-             }                
-       })
-       .then((resp) =>{
-      
-        
-         url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/recipe/${resp.Id}`;
-       
-       })
-       
-
+            url = url1;
          }
        
         fetch(url)
@@ -122,6 +104,56 @@
       })
        
       },
+      GetData1(){
+        
+        let url= ``;
+      
+            url = `Under30.json`;
+         
+        fetch(url)
+           .then((resp)=> {
+            if(resp.ok){
+              return resp.json();
+            }
+            else{
+              alert("Server returned " + response.status + " : " + response.statusText);
+                }                
+          })
+
+       .then((resp) =>{
+        const btn = document.querySelector("#refresh");
+      
+        btn.classList.add("button--loading");
+       
+
+      
+        var random =  Math.floor(Math.random() * 40);
+        url1 = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/recipe/${resp.Recipes[random].Id}`;
+        console.log(url1)
+        this.GetData(1);
+        btn.classList.remove("button--loading");
+        
+        })
+        .catch((error) => {
+          if (typeof error.json === "function") {
+              error.json().then(jsonError => {
+                  console.log("Json error from API");
+                  console.log(jsonError);
+              }).catch(genericError => {
+                  console.log("Generic error from API");
+                  console.log(error.statusText);
+              });
+          } else {
+              console.log("Fetch error");
+              console.log(error);
+          }
+      })
+       
+      },
+
+
+
+    
 
 
        GetRandomRecipes(data){
