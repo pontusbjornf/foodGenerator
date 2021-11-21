@@ -32,7 +32,8 @@
               <div class="col" id ="choose">
                 <h4>Recept</h4>
                 <ul>
-                  <li><a style="cursor: pointer;" onclick="$('#Menu,#refresh').click()">Dagens</a></li>
+                  <li><a style="cursor: pointer;" onclick="$('#Menu,#refresh').click()"v-on:click="GetData(1)">Dagens</a></li>
+                  <li><a style="cursor: pointer;" onclick="$('#Menu,#refresh').click()" v-on:click="GetData(2)">Under 30 Minuter</a></li>
                   <!-- <li><a href="#"v-on:click="GetData1()">Under 30 Minuter</a></li>
                   <li><a href="#">Laktosfri </a></li>
                   <li><a href="#">Glutenfria </a></li>
@@ -57,6 +58,7 @@
 <body>
       <!-- #=========================# Content Recipe #=========================# -->
       <div class="content">
+        <!-- <button type = "button" class="button" hidden=true onclick="this.classList.toggle('button--loading')" id =refreshUnder30 v-on:click="GetData(1)"></button> -->
         <button type="button" class="button" onclick="this.classList.toggle('button--loading')" id="refresh" v-on:click="GetData()">
           <span class="button__text"><i class="fas fa-sync-alt"></i></span>
         </button>

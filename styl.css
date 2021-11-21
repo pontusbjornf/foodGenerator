@@ -1,6 +1,11 @@
 html {
     box-sizing: border-box;
     background: rgba(140, 185, 135, 0.705);
+    background-image: url('Asset/BackgroundPicture.jpg');
+    background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top; 
+  background-size: 100% 50%;
 }
 
   
@@ -471,8 +476,6 @@ html {
   border-radius: 0.5em;
   outline: var(--outline-width) solid lime;
 }
-
-
 
 .button__text {
   font: bold 20px "Quicksand", san-serif;
