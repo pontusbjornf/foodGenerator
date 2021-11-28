@@ -1,4 +1,4 @@
-<html lang="se">
+<html lang="se" class="parallax ">
 <head>
   
     <meta charset="UTF-8">
@@ -8,8 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="./styl.css" type="text/css" />
-  
+    <link rel="stylesheet" href="./style.css" type="text/css" />
     <title>Home</title>
 
     <div id ="showData">
@@ -38,10 +37,6 @@
                 <ul>
                   
                  <li><a v-on:click="GetRandomRecipes()" onclick="$('#hej').click()">Dagens</a></li>
-                  <!-- <li><a href="">Hälsosamma</a></li>
-                  <li><a href="#">Laktosfri </a></li>
-                  <li><a href="#">Glutenfria </a></li>
-                  <li><a href="#">Vegetariska </a></li> -->
                 </ul>            
               </div>
               <div class="col">
@@ -62,7 +57,7 @@
 <body>
       <!-- #=========================# Contet Recepi #=========================# -->
 
-      <main>
+      <main class="contentCard">
         <ul id="cards">
             <li class="card" id="card_1">
                 <div class="card__content" style="height: 600px;" >
@@ -130,10 +125,7 @@
   <div class="col">
     <h1>Recept</h1>
     <ul>
-      <a href="/index.html"> <li>Dagens</li> </a>
-      <li>Laktosfri </li>
-      <li> Glutenfria</li>
-      <li> Vegetariska </li> -->
+      <a style="text-decoration: none;" href="./index.html"> <li>Dagens</li> </a>
     </ul>
   </div>
   <div class="col">
