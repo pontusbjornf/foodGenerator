@@ -67,12 +67,14 @@ $("#topFuction").click(function () {
        }
       if(input == 1){
             //url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
-            url = 'https://handla.api.ica.se/api/recipes/random?numberofrecipes=1';
+           // url = 'https://handla.api.ica.se/api/recipes/random?numberofrecipes=1';
+
+            url = '/RandomRecipe.json'
             this.prevInput= input;
          }
          else if(input == 2){
            
-           var random =  Math.floor(Math.random() * 2000);
+           var random =  Math.floor(Math.random() * 100);
            category = "under 30 minuter"
             url = `https://handla.api.ica.se/api/recipes/searchwithfilters?phrase=${category}&recordsPerPage=1&pageNumber=${random}&sorting=1`
             this.prevInput= input;
@@ -113,8 +115,9 @@ $("#topFuction").click(function () {
 
           }
           else {
-          
-            this.GetRandomRecipes(resp.Recipes[0]);
+            var random =  Math.floor(Math.random() * 1250);
+            debugger
+            this.GetRandomRecipes(resp.Recipes[random]);
           }
 
           btn.classList.remove("button--loading");
@@ -181,7 +184,7 @@ $("#topFuction").click(function () {
     },
 
        GetRandomRecipes(data){
-
+              console.log(data)
               this.result = data;
               this.img = data.ImageUrl;
               this.ingredients = [];
