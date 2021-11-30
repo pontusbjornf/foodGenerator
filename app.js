@@ -59,7 +59,6 @@ $("#topFuction").click(function () {
      methods: {
    
        GetData(input){
-        category = input;
         let url= ``;
        var prevInput;
        if(input == null){
@@ -73,11 +72,14 @@ $("#topFuction").click(function () {
             this.prevInput= input;
          }
          else if(input == 2){
-           
-           var random =  Math.floor(Math.random() * 100);
-           category = "under 30 minuter"
-            url = `https://handla.api.ica.se/api/recipes/searchwithfilters?phrase=${category}&recordsPerPage=1&pageNumber=${random}&sorting=1`
-            this.prevInput= input;
+           debugger
+          //  var random =  Math.floor(Math.random() * 100);
+          //  category = "under 30 minuter"
+          //   url = `https://handla.api.ica.se/api/recipes/searchwithfilters?phrase=${category}&recordsPerPage=1&pageNumber=${random}&sorting=1`
+          this.prevInput= input;
+          url = '/RandomRecipe.json'
+
+
          }
        
         fetch(url)
@@ -94,34 +96,24 @@ $("#topFuction").click(function () {
         const btn = document.querySelector("#refresh");
         console.log("WORKING")
         btn.classList.add("button--loading");
-        
-          if(input==2)
+          if(this.prevInput==2) //input är under 30 minuter
           {
-            recipeId = resp.Recipes[0].Id;
-
-              url = `https://handla.api.ica.se/api/recipes/recipe/${recipeId}`
-              fetch(url)
-              .then((resp2)=> {
-               if(resp2.ok){
-                 return resp2.json();
-               }
-               else{
-                 alert("Server returned " + response.status + " : " + response.statusText);
-                   }                
-             })
-             .then((resp2) =>{
-              this.GetRandomRecipes(resp2);
-             })
-
+            var isUnder30Min = false;
+            while (!isUnder30Min) {
+              var random =  Math.floor(Math.random() * 1250);
+           
+              if(resp.Recipes[random].CookingTime == "Under 30 minuter"){
+                this.GetRandomRecipes(resp.Recipes[random]);
+                isUnder30Min = true;
+              }
+            }
           }
           else {
             var random =  Math.floor(Math.random() * 1250);
             debugger
             this.GetRandomRecipes(resp.Recipes[random]);
           }
-
           btn.classList.remove("button--loading");
-        
         })
         .catch((error) => {
           if (typeof error.json === "function") {
@@ -139,50 +131,7 @@ $("#topFuction").click(function () {
       })
        
       },
-      GetData1(){
-        
-        let url= ``;
-      
-            url = `Under30.json`;
-         
-        fetch(url)
-           .then((resp)=> {
-            if(resp.ok){
-              return resp.json();
-            }
-            else{
-              alert("Server returned " + response.status + " : " + response.statusText);
-                }                
-          })
-
-       .then((resp) =>{
-        
-
-      
-        var random =  Math.floor(Math.random() * 40);
-        url1 = `https://handla.api.ica.se/https://handla.api.ica.se/api/recipes/searchwithfilters?phrase=under 30 minuter&recordsPerPage=1&pageNumber=1&sorting=1`;
-        console.log(url1)
-        this.GetData(1);
-       
-        
-        })
-        .catch((error) => {
-          if (typeof error.json === "function") {
-              error.json().then(jsonError => {
-                  console.log("Json error from API");
-                  console.log(jsonError);
-              }).catch(genericError => {
-                  console.log("Generic error from API");
-                  console.log(error.statusText);
-              });
-          } else {
-              console.log("Fetch error");
-              console.log(error);
-          }
-      })
-       
-    },
-
+    
        GetRandomRecipes(data){
               console.log(data)
               this.result = data;
@@ -220,14 +169,6 @@ $("#topFuction").click(function () {
               
        },
 
-
-       GetId(url){
-
-
-
-
-       },
-
        CleanUpText(arrayLenght, arrayContent){
         for (let index = 0; index < arrayLenght; index++) {
                   
@@ -261,4 +202,46 @@ $("#topFuction").click(function () {
 
 
     /* =================================================================== Get recepi ends ==================================================================== */
-    
+    //GetData1(){
+        
+      //     let url= ``;
+        
+      //         url = `Under30.json`;
+           
+      //     fetch(url)
+      //        .then((resp)=> {
+      //         if(resp.ok){
+      //           return resp.json();
+      //         }
+      //         else{
+      //           alert("Server returned " + response.status + " : " + response.statusText);
+      //             }                
+      //       })
+  
+      //    .then((resp) =>{
+          
+  
+        
+      //     var random =  Math.floor(Math.random() * 40);
+      //     url1 = `https://handla.api.ica.se/https://handla.api.ica.se/api/recipes/searchwithfilters?phrase=under 30 minuter&recordsPerPage=1&pageNumber=1&sorting=1`;
+      //     console.log(url1)
+      //     this.GetData(1);
+         
+          
+      //     })
+      //     .catch((error) => {
+      //       if (typeof error.json === "function") {
+      //           error.json().then(jsonError => {
+      //               console.log("Json error from API");
+      //               console.log(jsonError);
+      //           }).catch(genericError => {
+      //               console.log("Generic error from API");
+      //               console.log(error.statusText);
+      //           });
+      //       } else {
+      //           console.log("Fetch error");
+      //           console.log(error);
+      //       }
+      //   })
+         
+      // },
