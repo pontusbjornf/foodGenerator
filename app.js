@@ -31,7 +31,7 @@ $("#topFuction").click(function () {
   window.addEventListener('load', (event) => {
     getData.GetData(1);
   });
-  /* =================================================================== Get recepi ==================================================================== */
+  /* =================================================================== Get recepie ==================================================================== */
 
   var category = 0;
   var url1 ="";
@@ -61,26 +61,32 @@ $("#topFuction").click(function () {
        GetData(input){
         let url= ``;
        var prevInput;
+       const numberOfRecipes = 1250;
        if(input == null){
          input = this.prevInput;
        }
-      if(input == 1){
-            //url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
-           // url = 'https://handla.api.ica.se/api/recipes/random?numberofrecipes=1';
+       url ='/RandomRecipe.json';
+       this.prevInput = input;
+      // if(input == 1){
+      //       //url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
+      //      // url = 'https://handla.api.ica.se/api/recipes/random?numberofrecipes=1';
 
-            url = '/RandomRecipe.json'
-            this.prevInput= input;
-         }
-         else if(input == 2){
-           debugger
-          //  var random =  Math.floor(Math.random() * 100);
-          //  category = "under 30 minuter"
-          //   url = `https://handla.api.ica.se/api/recipes/searchwithfilters?phrase=${category}&recordsPerPage=1&pageNumber=${random}&sorting=1`
-          this.prevInput= input;
-          url = '/RandomRecipe.json'
+      //       url = '/RandomRecipe.json'
+      //       this.prevInput= input;
+      //    }
+      //    else if(input == 2){
+      //      debugger
+      //     //  var random =  Math.floor(Math.random() * 100);
+      //     //  category = "under 30 minuter"
+      //     //   url = `https://handla.api.ica.se/api/recipes/searchwithfilters?phrase=${category}&recordsPerPage=1&pageNumber=${random}&sorting=1`
+      //     this.prevInput= input;
+      //     url = '/RandomRecipe.json'
 
 
-         }
+      //    }
+      //    else if(input == 3){
+      //      this.prevInput = input;
+      //    }
        
         fetch(url)
            .then((resp)=> {
@@ -100,7 +106,7 @@ $("#topFuction").click(function () {
           {
             var isUnder30Min = false;
             while (!isUnder30Min) {
-              var random =  Math.floor(Math.random() * 1250);
+              var random =  Math.floor(Math.random() * numberOfRecipes);
            
               if(resp.Recipes[random].CookingTime == "Under 30 minuter"){
                 this.GetRandomRecipes(resp.Recipes[random]);
@@ -108,9 +114,33 @@ $("#topFuction").click(function () {
               }
             }
           }
+          else if(this.prevInput == 3) //input är vegetarisk
+          {
+
+            var isVegetarianRecipe = false;
+            while(!isVegetarianRecipe){
+              
+              var random =  Math.floor(Math.random() * numberOfRecipes);
+
+              resp.Recipes[random].MdsaCategories.forEach(element => {
+                
+                if(element == "Vegetarisk"){
+                  this.GetRandomRecipes(resp.Recipes[random]);
+                  isVegetarianRecipe = true;
+                }
+
+              });
+
+
+            } 
+
+          }
+
+
           else {
-            var random =  Math.floor(Math.random() * 1250);
             debugger
+            var random =  Math.floor(Math.random() * numberOfRecipes);
+            
             this.GetRandomRecipes(resp.Recipes[random]);
           }
           btn.classList.remove("button--loading");
