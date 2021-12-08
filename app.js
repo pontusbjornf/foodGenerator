@@ -1,4 +1,28 @@
+/* =================================================================== DATABASE  ==================================================================== */
+  import firebase from 'firebase'
+  
+  const config =  {
+    apiKey: "AIzaSyBlfPEDlw1ltXf0UQ7h9MyHm2Exzpx0pms",
+    authDomain: "foodgeneratordb.firebaseapp.com",
+    projectId: "foodgeneratordb",
+    storageBucket: "foodgeneratordb.appspot.com",
+    messagingSenderId: "779132111138",
+    appId: "1:779132111138:web:07478c494da2ac68eafd7b",
+    measurementId: "G-R1RFDK4JZP"
+  };
 
+  const firebaseApp = firebase.initializeApp(config);
+
+  const db = firebaseApp.firestore();
+  const usersCollection = db.collection('users');
+  
+
+
+  
+  
+  
+  
+  
   /* =================================================================== Jqurey Menu ==================================================================== */
   $(function() {
     $('body').addClass('js');
