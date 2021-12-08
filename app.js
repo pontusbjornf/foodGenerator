@@ -1,24 +1,5 @@
 /* =================================================================== DATABASE  ==================================================================== */
-  import firebase from 'firebase'
-  
-  const config =  {
-    apiKey: "AIzaSyBlfPEDlw1ltXf0UQ7h9MyHm2Exzpx0pms",
-    authDomain: "foodgeneratordb.firebaseapp.com",
-    projectId: "foodgeneratordb",
-    storageBucket: "foodgeneratordb.appspot.com",
-    messagingSenderId: "779132111138",
-    appId: "1:779132111138:web:07478c494da2ac68eafd7b",
-    measurementId: "G-R1RFDK4JZP"
-  };
 
-  const firebaseApp = firebase.initializeApp(config);
-
-  const db = firebaseApp.firestore();
-  const usersCollection = db.collection('users');
-  
-
-
-  
   
   
   
@@ -65,7 +46,6 @@ $("#topFuction").click(function () {
     el: "#showData",
     
     data: {
-
       result: "",
       img: "",
       ingredients: [],
@@ -75,8 +55,6 @@ $("#topFuction").click(function () {
       time:"",
       portions:"",
       responseAvailable: "false"
-      
-      
      },
      
 
@@ -91,27 +69,7 @@ $("#topFuction").click(function () {
        }
        url ='/RandomRecipe.json';
        this.prevInput = input;
-      // if(input == 1){
-      //       //url = `https://cors.bridged.cc/https://handla.api.ica.se/api/recipes/random?numberofrecipes=1`;
-      //      // url = 'https://handla.api.ica.se/api/recipes/random?numberofrecipes=1';
 
-      //       url = '/RandomRecipe.json'
-      //       this.prevInput= input;
-      //    }
-      //    else if(input == 2){
-      //      debugger
-      //     //  var random =  Math.floor(Math.random() * 100);
-      //     //  category = "under 30 minuter"
-      //     //   url = `https://handla.api.ica.se/api/recipes/searchwithfilters?phrase=${category}&recordsPerPage=1&pageNumber=${random}&sorting=1`
-      //     this.prevInput= input;
-      //     url = '/RandomRecipe.json'
-
-
-      //    }
-      //    else if(input == 3){
-      //      this.prevInput = input;
-      //    }
-       
         fetch(url)
            .then((resp)=> {
             if(resp.ok){
@@ -152,15 +110,9 @@ $("#topFuction").click(function () {
                   this.GetRandomRecipes(resp.Recipes[random]);
                   isVegetarianRecipe = true;
                 }
-
               });
-
-
             } 
-
           }
-
-
           else {
             debugger
             var random =  Math.floor(Math.random() * numberOfRecipes);
@@ -186,6 +138,8 @@ $("#topFuction").click(function () {
        
       },
     
+
+
        GetRandomRecipes(data){
               console.log(data)
               this.result = data;
@@ -250,6 +204,56 @@ $("#topFuction").click(function () {
       }
 
    })
+
+   Vue.component('popUpLogIn', {
+   created(){
+    this.$root.$refs.showitems = this;
+  },
+  updated(){
+    this.$root.$refs.showitems = this;
+  },
+   
+data: function(){
+  return {
+     email: "",
+     fullName:"",
+     recipes: []
+    
+  }
+},
+
+template:
+'<div>'+
+' <div class="center">'+
+'<input type="checkbox" id="show">'+
+'<label for="show" class="show-btn">View Form</label>'+
+'<div class="contanThis">'+
+   '<label for="show" class="close-btn fas fa-times" title="close"></label>'+
+   '<div class="text">Login Form</div>'+
+   '<form action="#" class="formStyle">'+
+    '<div class="data">'+
+         '<label>Email or Phone</label>'+
+         '<input type="text" required>'+
+     '</div>'+
+      '<div class="data">'+
+         '<label>Password</label>'+
+         '<input type="password" required>'+
+      '</div>'+
+      '<div class="forgot-pass">'+
+         '<a href="#">Forgot Password?</a>'+
+      '</div>'+
+      '<div class="btn">'+
+         '<div class="inner"></div>'+
+         '<button type="submit">login</button>'+
+      '</div>'+
+      '<div class="signup-link">Not a member? <a href="#">Signup now</a>'+
+      '</div>'+
+   '</form>'+
+'</div>'+
+'</div>'+
+'</div>'
+})
+  
 
  
 
