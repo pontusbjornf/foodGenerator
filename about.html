@@ -35,9 +35,16 @@
               <div class="col" id ="choose">
                 <h4>Recept</h4>
                 <ul>
-                  
-                 <li><a v-on:click="GetRandomRecipes()" onclick="$('#hej').click()">Dagens</a></li>
-                </ul>            
+                  <li><a style="cursor: pointer;" onclick="$('#Menu,#refresh').click()"v-on:click="GetData(1)">Dagens</a></li>
+                  <li><a style="cursor: pointer;" onclick="$('#Menu,#refresh').click()" v-on:click="GetData(2)">Under 30 Minuter</a></li>
+                  <li><a style="cursor: pointer;" onclick="$('#Menu,#refresh').click()" v-on:click="GetData(3)">Vegetariska recept</a></li>
+                </ul>               
+              </div>
+              <div class="col">
+                <h4>Min Profil</h4>
+                <ul>
+                  <li><a href="./user.html">Favoriter</a></li>
+                </ul>    
               </div>
               <div class="col">
                 <h4>Kontakta oss</h4>
@@ -47,7 +54,8 @@
               </div>
              
               <div class="col">
-               
+                  <!-- #=========================# only for space #=========================# -->
+              </div>
           </nav>
         </div>
       </header>

@@ -9,7 +9,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js" type="text/javascript"></script>
     <link rel="stylesheet" href="./style.css" type="text/css" />
-  
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
     <title>Home</title>
 
     <div id ="showData" >
@@ -60,54 +61,68 @@
   <!-- #=========================# Menu ends here #=========================# -->
 </head>
 <body>
-      <!-- #=========================# Content Recipe #=========================# -->
+      <!-- #=========================# Content saved  #=========================# -->
       <div class="content">
-      
-        <button type="button" class="button" onclick="this.classList.toggle('button--loading')" id="refresh" v-on:click="GetData()">
-          <span class="button__text"><i class="fas fa-sync-alt"></i></span>
-        </button>
-        <div class="main">
-          <h2>{{ result.Title }}</h2>
-          <br>
-          <h5>{{result.PreambleHTML}}</h5>
-          <div class="fakeimg"><img  :src = "img"/></div>
-          <!-- ========================================================================================= recipes header summary -->
-          <div class="recipes_header_summary">
-            <div class="flex-horiz-container"><div class="left"> <i class="far fa-clock"></i> <br> <br>
-             <p>{{time}}</p> </div>
-            <div class="left"> <i class="fas fa-utensils"></i>
-              <br> <br>
-              <p>{{totalingredients}}</p> </div>
-            <div class="left"> <i class="fas fa-chart-line"></i>
-              <br> <br>
-              <p>{{difficulty}}</p> </div>
-              <div class="left"> <i class="fas fa-chart-pie"></i></i>
-                <br> <br>
-                <p>{{portions}}</p> </div>
-          </div>
-           <!-- ========================================================================================= recipes header summary ends -->
-          <!-- ========================================================================================= recipes/cookingsteps -->
-          <div class="test">
-          <p>Ingredienser:</p>
-          <br>
-          <ol style="font-size: 12;" v-for ="ing in ingredients">
-              {{ing}}
-          </ol>
-          <br>
-          <p>Gör så här: </p>
-         
-          <ol style="font-size: 12; white-space:pre-line;" v-for = "step in cookingSteps">
-            {{step}}
-          </ol>
-        </div>
-        <!-- ========================================================================================= recipes/cookingsteps ends -->
-        </div> 
-     </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br> 
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br> 
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br> 
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+ 
     </div>
     
-           <!-- #=========================# Content Recipe ENDS HERE#=========================# -->
 
-  
+     <!-- #=========================# Content saved ENDS HERE#=========================# -->
+
+
 
 <!-- FOOTER START -->
 <div class="footer">

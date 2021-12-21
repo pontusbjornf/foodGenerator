@@ -114,7 +114,7 @@ $("#topFuction").click(function () {
             } 
           }
           else {
-            debugger
+         
             var random =  Math.floor(Math.random() * numberOfRecipes);
             
             this.GetRandomRecipes(resp.Recipes[random]);
@@ -146,7 +146,7 @@ $("#topFuction").click(function () {
               this.img = data.ImageUrl;
               this.ingredients = [];
               this.cookingSteps = data.CookingSteps;
-              //----------------------------------------Skrivet ut undefined
+         
             
 
               this.difficulty = `${data.Difficulty}`;
@@ -254,52 +254,3 @@ template:
 '</div>'
 })
   
-
- 
-
-
-
-    /* =================================================================== Get recepi ends ==================================================================== */
-    //GetData1(){
-        
-      //     let url= ``;
-        
-      //         url = `Under30.json`;
-           
-      //     fetch(url)
-      //        .then((resp)=> {
-      //         if(resp.ok){
-      //           return resp.json();
-      //         }
-      //         else{
-      //           alert("Server returned " + response.status + " : " + response.statusText);
-      //             }                
-      //       })
-  
-      //    .then((resp) =>{
-          
-  
-        
-      //     var random =  Math.floor(Math.random() * 40);
-      //     url1 = `https://handla.api.ica.se/https://handla.api.ica.se/api/recipes/searchwithfilters?phrase=under 30 minuter&recordsPerPage=1&pageNumber=1&sorting=1`;
-      //     console.log(url1)
-      //     this.GetData(1);
-         
-          
-      //     })
-      //     .catch((error) => {
-      //       if (typeof error.json === "function") {
-      //           error.json().then(jsonError => {
-      //               console.log("Json error from API");
-      //               console.log(jsonError);
-      //           }).catch(genericError => {
-      //               console.log("Generic error from API");
-      //               console.log(error.statusText);
-      //           });
-      //       } else {
-      //           console.log("Fetch error");
-      //           console.log(error);
-      //       }
-      //   })
-         
-      // },
