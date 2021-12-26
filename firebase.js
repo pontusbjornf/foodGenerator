@@ -1,6 +1,8 @@
-import firebase from 'firebase'
-  
-const config =  {
+
+import { initializeApp } from 'firebase/app';
+
+// TODO: Replace the following with your app's Firebase project configuration
+const firebaseConfig = {
   apiKey: "AIzaSyBlfPEDlw1ltXf0UQ7h9MyHm2Exzpx0pms",
   authDomain: "foodgeneratordb.firebaseapp.com",
   projectId: "foodgeneratordb",
@@ -10,30 +12,30 @@ const config =  {
   measurementId: "G-R1RFDK4JZP"
 };
 
-const firebaseApp = firebase.initializeApp(config);
+const app = initializeApp(firebaseConfig);
+  
+import { GoogleAuthProvider } from "firebase/auth";
 
-const db = firebaseApp.firestore();
-const usersCollection = db.collection('users');
+const provider = new GoogleAuthProvider();
 
-export const createUser = user => {
-return usersCollection.add(user);
-}
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-export const getUser = async id=> {
-const user = await usersCollection.doc(id).get()
-return user.exists ? user.data() : null;
-}
-export const updateUser = (id, user) =>{
-return usersCollection.doc(id).update(user)
-}
-export const deleteUser = id => {
-return usersCollection.doc(id).delete();
-}
-export const useLoadUsers = () => {
-const users = ref([])
-usersCollection.onSnapshot(snapshot => {
-  users.value = snapshot.dosc.map(doc => ({ id: doc.id, ...doc.data()}))
-})
-onUnmounted(close);
-return users
-}
+const auth = getAuth();
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
